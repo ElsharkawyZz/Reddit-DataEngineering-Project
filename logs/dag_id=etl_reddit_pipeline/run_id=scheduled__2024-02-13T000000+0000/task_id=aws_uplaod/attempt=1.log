@@ -1,0 +1,30 @@
+[2024-02-14T00:00:10.098+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_reddit_pipeline.aws_uplaod scheduled__2024-02-13T00:00:00+00:00 [queued]>
+[2024-02-14T00:00:10.115+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_reddit_pipeline.aws_uplaod scheduled__2024-02-13T00:00:00+00:00 [queued]>
+[2024-02-14T00:00:10.118+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2024-02-14T00:00:10.149+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): aws_uplaod> on 2024-02-13 00:00:00+00:00
+[2024-02-14T00:00:10.159+0000] {standard_task_runner.py:60} INFO - Started process 204 to run task
+[2024-02-14T00:00:10.165+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'etl_reddit_pipeline', 'aws_uplaod', 'scheduled__2024-02-13T00:00:00+00:00', '--job-id', '60', '--raw', '--subdir', 'DAGS_FOLDER/reddit_dag.py', '--cfg-path', '/tmp/tmpzn5kjb3j']
+[2024-02-14T00:00:10.170+0000] {standard_task_runner.py:88} INFO - Job 60: Subtask aws_uplaod
+[2024-02-14T00:00:10.255+0000] {task_command.py:423} INFO - Running <TaskInstance: etl_reddit_pipeline.aws_uplaod scheduled__2024-02-13T00:00:00+00:00 [running]> on host edfa37962e49
+[2024-02-14T00:00:10.400+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='ahmed Elsharkawy' AIRFLOW_CTX_DAG_ID='etl_reddit_pipeline' AIRFLOW_CTX_TASK_ID='aws_uplaod' AIRFLOW_CTX_EXECUTION_DATE='2024-02-13T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-02-13T00:00:00+00:00'
+[2024-02-14T00:00:11.654+0000] {logging_mixin.py:188} INFO - Bucket already exists
+[2024-02-14T00:00:12.318+0000] {logging_mixin.py:188} INFO - File uploaded to S3
+[2024-02-14T00:00:12.319+0000] {python.py:201} INFO - Done. Returned value was: None
+[2024-02-14T00:00:12.340+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=etl_reddit_pipeline, task_id=aws_uplaod, execution_date=20240213T000000, start_date=20240214T000010, end_date=20240214T000012
+[2024-02-14T00:00:12.390+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2024-02-14T00:00:12.423+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-02-14T15:18:00.823+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_reddit_pipeline.aws_uplaod scheduled__2024-02-13T00:00:00+00:00 [queued]>
+[2024-02-14T15:18:00.855+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_reddit_pipeline.aws_uplaod scheduled__2024-02-13T00:00:00+00:00 [queued]>
+[2024-02-14T15:18:00.857+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2024-02-14T15:18:00.915+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): aws_uplaod> on 2024-02-13 00:00:00+00:00
+[2024-02-14T15:18:00.936+0000] {standard_task_runner.py:60} INFO - Started process 62 to run task
+[2024-02-14T15:18:00.949+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'etl_reddit_pipeline', 'aws_uplaod', 'scheduled__2024-02-13T00:00:00+00:00', '--job-id', '68', '--raw', '--subdir', 'DAGS_FOLDER/reddit_dag.py', '--cfg-path', '/tmp/tmpntmnr4ab']
+[2024-02-14T15:18:00.962+0000] {standard_task_runner.py:88} INFO - Job 68: Subtask aws_uplaod
+[2024-02-14T15:18:01.186+0000] {task_command.py:423} INFO - Running <TaskInstance: etl_reddit_pipeline.aws_uplaod scheduled__2024-02-13T00:00:00+00:00 [running]> on host 5e6bd48f135b
+[2024-02-14T15:18:01.580+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='ahmed Elsharkawy' AIRFLOW_CTX_DAG_ID='etl_reddit_pipeline' AIRFLOW_CTX_TASK_ID='aws_uplaod' AIRFLOW_CTX_EXECUTION_DATE='2024-02-13T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-02-13T00:00:00+00:00'
+[2024-02-14T15:18:06.098+0000] {logging_mixin.py:188} INFO - Bucket created
+[2024-02-14T15:18:06.977+0000] {logging_mixin.py:188} INFO - File uploaded to S3
+[2024-02-14T15:18:06.981+0000] {python.py:201} INFO - Done. Returned value was: None
+[2024-02-14T15:18:07.039+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=etl_reddit_pipeline, task_id=aws_uplaod, execution_date=20240213T000000, start_date=20240214T151800, end_date=20240214T151807
+[2024-02-14T15:18:07.174+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2024-02-14T15:18:07.238+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

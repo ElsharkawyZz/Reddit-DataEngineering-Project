@@ -1,0 +1,24 @@
+[2024-02-13T21:38:16.172+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_reddit_pipeline.aws_uplaod manual__2024-02-13T21:37:34.576483+00:00 [queued]>
+[2024-02-13T21:38:16.207+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_reddit_pipeline.aws_uplaod manual__2024-02-13T21:37:34.576483+00:00 [queued]>
+[2024-02-13T21:38:16.209+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2024-02-13T21:38:16.309+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): aws_uplaod> on 2024-02-13 21:37:34.576483+00:00
+[2024-02-13T21:38:16.342+0000] {standard_task_runner.py:60} INFO - Started process 57 to run task
+[2024-02-13T21:38:16.361+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'etl_reddit_pipeline', 'aws_uplaod', 'manual__2024-02-13T21:37:34.576483+00:00', '--job-id', '22', '--raw', '--subdir', 'DAGS_FOLDER/reddit_dag.py', '--cfg-path', '/tmp/tmp7esmsw9o']
+[2024-02-13T21:38:16.373+0000] {standard_task_runner.py:88} INFO - Job 22: Subtask aws_uplaod
+[2024-02-13T21:38:16.660+0000] {task_command.py:423} INFO - Running <TaskInstance: etl_reddit_pipeline.aws_uplaod manual__2024-02-13T21:37:34.576483+00:00 [running]> on host edfa37962e49
+[2024-02-13T21:38:17.016+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='ahmed Elsharkawy' AIRFLOW_CTX_DAG_ID='etl_reddit_pipeline' AIRFLOW_CTX_TASK_ID='aws_uplaod' AIRFLOW_CTX_EXECUTION_DATE='2024-02-13T21:37:34.576483+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-02-13T21:37:34.576483+00:00'
+[2024-02-13T21:38:17.021+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 199, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 216, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/pipelines/aws_pipeline.py", line 6, in aws_pipeline
+    file_path = ti.xcoms_pull(task_ids='reddit_extraction',key='return_value')
+AttributeError: 'TaskInstance' object has no attribute 'xcoms_pull'
+[2024-02-13T21:38:17.086+0000] {taskinstance.py:1138} INFO - Marking task as FAILED. dag_id=etl_reddit_pipeline, task_id=aws_uplaod, execution_date=20240213T213734, start_date=20240213T213816, end_date=20240213T213817
+[2024-02-13T21:38:17.270+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 22 for task aws_uplaod ('TaskInstance' object has no attribute 'xcoms_pull'; 57)
+[2024-02-13T21:38:17.387+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2024-02-13T21:38:17.431+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

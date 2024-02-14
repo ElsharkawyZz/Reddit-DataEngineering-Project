@@ -1,0 +1,55 @@
+[2024-02-13T21:42:34.321+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_reddit_pipeline.aws_uplaod manual__2024-02-13T21:42:23.787638+00:00 [queued]>
+[2024-02-13T21:42:34.337+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_reddit_pipeline.aws_uplaod manual__2024-02-13T21:42:23.787638+00:00 [queued]>
+[2024-02-13T21:42:34.338+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2024-02-13T21:42:34.370+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): aws_uplaod> on 2024-02-13 21:42:23.787638+00:00
+[2024-02-13T21:42:34.380+0000] {standard_task_runner.py:60} INFO - Started process 63 to run task
+[2024-02-13T21:42:34.386+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'etl_reddit_pipeline', 'aws_uplaod', 'manual__2024-02-13T21:42:23.787638+00:00', '--job-id', '24', '--raw', '--subdir', 'DAGS_FOLDER/reddit_dag.py', '--cfg-path', '/tmp/tmpry6jg3w6']
+[2024-02-13T21:42:34.391+0000] {standard_task_runner.py:88} INFO - Job 24: Subtask aws_uplaod
+[2024-02-13T21:42:34.487+0000] {task_command.py:423} INFO - Running <TaskInstance: etl_reddit_pipeline.aws_uplaod manual__2024-02-13T21:42:23.787638+00:00 [running]> on host edfa37962e49
+[2024-02-13T21:42:34.645+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='ahmed Elsharkawy' AIRFLOW_CTX_DAG_ID='etl_reddit_pipeline' AIRFLOW_CTX_TASK_ID='aws_uplaod' AIRFLOW_CTX_EXECUTION_DATE='2024-02-13T21:42:23.787638+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-02-13T21:42:23.787638+00:00'
+[2024-02-13T21:42:34.682+0000] {logging_mixin.py:188} INFO - <s3fs.core.S3FileSystem object at 0x7f9a121de920>
+[2024-02-13T21:42:35.468+0000] {logging_mixin.py:188} INFO - Bucket create failed '"redditengineering"': Parameter validation failed:
+Invalid bucket name ""redditengineering"": Bucket name must match the regex "^[a-zA-Z0-9.\-_]{1,255}$" or be an ARN matching the regex "^arn:(aws).*:(s3|s3-object-lambda):[a-z\-0-9]*:[0-9]{12}:accesspoint[/:][a-zA-Z0-9\-.]{1,63}$|^arn:(aws).*:s3-outposts:[a-z\-0-9]+:[0-9]{12}:outpost[/:][a-zA-Z0-9\-]{1,63}[/:]accesspoint[/:][a-zA-Z0-9\-]{1,63}$"
+[2024-02-13T21:42:35.512+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 199, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 216, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/pipelines/aws_pipeline.py", line 10, in aws_pipeline
+    upload_s3(s3,file_path,AWS_BUCKET_NAME,file_path.split('/')[-1])
+  File "/opt/airflow/etls/aws_s3_etl.py", line 27, in upload_s3
+    s3.put(filepath,bucket+'/raw/'+s3_file_name)
+  File "/home/airflow/.local/lib/python3.10/site-packages/fsspec/asyn.py", line 118, in wrapper
+    return sync(self.loop, func, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/fsspec/asyn.py", line 103, in sync
+    raise return_result
+  File "/home/airflow/.local/lib/python3.10/site-packages/fsspec/asyn.py", line 56, in _runner
+    result[0] = await coro
+  File "/home/airflow/.local/lib/python3.10/site-packages/fsspec/asyn.py", line 546, in _put
+    trailing_sep(rpath) or await self._isdir(rpath)
+  File "/home/airflow/.local/lib/python3.10/site-packages/s3fs/core.py", line 1411, in _isdir
+    return bool(await self._lsdir(path))
+  File "/home/airflow/.local/lib/python3.10/site-packages/s3fs/core.py", line 706, in _lsdir
+    async for c in self._iterdir(
+  File "/home/airflow/.local/lib/python3.10/site-packages/s3fs/core.py", line 756, in _iterdir
+    async for i in it:
+  File "/home/airflow/.local/lib/python3.10/site-packages/aiobotocore/paginate.py", line 30, in __anext__
+    response = await self._make_request(current_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/aiobotocore/client.py", line 345, in _make_api_call
+    api_params = await self._emit_api_params(
+  File "/home/airflow/.local/lib/python3.10/site-packages/aiobotocore/client.py", line 475, in _emit_api_params
+    await self.meta.events.emit(
+  File "/home/airflow/.local/lib/python3.10/site-packages/aiobotocore/hooks.py", line 66, in _emit
+    response = await resolve_awaitable(handler(**kwargs))
+  File "/home/airflow/.local/lib/python3.10/site-packages/botocore/handlers.py", line 288, in validate_bucket_name
+    raise ParamValidationError(report=error_msg)
+botocore.exceptions.ParamValidationError: Parameter validation failed:
+Invalid bucket name ""redditengineering"": Bucket name must match the regex "^[a-zA-Z0-9.\-_]{1,255}$" or be an ARN matching the regex "^arn:(aws).*:(s3|s3-object-lambda):[a-z\-0-9]*:[0-9]{12}:accesspoint[/:][a-zA-Z0-9\-.]{1,63}$|^arn:(aws).*:s3-outposts:[a-z\-0-9]+:[0-9]{12}:outpost[/:][a-zA-Z0-9\-]{1,63}[/:]accesspoint[/:][a-zA-Z0-9\-]{1,63}$"
+[2024-02-13T21:42:35.547+0000] {taskinstance.py:1138} INFO - Marking task as FAILED. dag_id=etl_reddit_pipeline, task_id=aws_uplaod, execution_date=20240213T214223, start_date=20240213T214234, end_date=20240213T214235
+[2024-02-13T21:42:35.577+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 24 for task aws_uplaod (Parameter validation failed:
+Invalid bucket name ""redditengineering"": Bucket name must match the regex "^[a-zA-Z0-9.\-_]{1,255}$" or be an ARN matching the regex "^arn:(aws).*:(s3|s3-object-lambda):[a-z\-0-9]*:[0-9]{12}:accesspoint[/:][a-zA-Z0-9\-.]{1,63}$|^arn:(aws).*:s3-outposts:[a-z\-0-9]+:[0-9]{12}:outpost[/:][a-zA-Z0-9\-]{1,63}[/:]accesspoint[/:][a-zA-Z0-9\-]{1,63}$"; 63)
+[2024-02-13T21:42:35.604+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2024-02-13T21:42:35.641+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check
