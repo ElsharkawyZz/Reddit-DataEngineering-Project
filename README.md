@@ -1,5 +1,5 @@
 # **Reddit Data Pipeline**
-
+![](<screens/RedditDataEngineering.png>)
 ## *Overview*
 
 The Reddit Data Pipeline is a comprehensive solution for Extract, Transform, and Load (ETL) processes to ingest Reddit data into a Redshift data warehouse. The pipeline is designed to efficiently handle the extraction of data from Reddit, perform necessary transformations, and load the curated data into Amazon Redshift for analytics.
