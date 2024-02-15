@@ -119,10 +119,10 @@ Trigger the ETL workflow using the Airflow UI or CLI.
 
 ## Project Snapshot
 *Load data to S3*
-![](<screens\Screenshot 2024-02-14 173042.png>)
+![](<screens/Screenshot 2024-02-14 173042.png>)
 *create Ceawlers for data*
-![Alt text](<screens\Screenshot 2024-02-14 173319.png>)
+![Alt text](<screens/Screenshot 2024-02-14 173319.png>)
 *Use Athena*
-![Alt text](<screens\Screenshot 2024-02-14 174203.png>)
+![Alt text](<screens/Screenshot 2024-02-14 174203.png>)
 *Use Amazon Redshift for analytics*
-![Alt text](<screens\Screenshot 2024-02-14 174433.png>)
+![Alt text](<screens/Screenshot 2024-02-14 174433.png>)
